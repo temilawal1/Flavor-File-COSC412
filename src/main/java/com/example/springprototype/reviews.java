@@ -10,24 +10,24 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import javax.annotation.processing.Generated;
 import java.util.List;
 
-@Document(collection = "recipes")
+@Document(collection = "reviews")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Recipe {
+public class reviews {
     @Id
     private ObjectId id;
 
     private String username;
 
-    private List<String> courses;
+    private String recipeID;
 
     private String author;
 
     private String userKey;
 
-    private String recipeName;
+    private String reviewText;
 
-    private List<String> reviewsLeft;
+    private double rating;
 
 }
