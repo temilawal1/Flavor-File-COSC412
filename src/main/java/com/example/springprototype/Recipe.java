@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import javax.annotation.processing.Generated;
 import java.util.List;
 
-@Document(collection = "recipes")
+@Document(collection = "datas")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
