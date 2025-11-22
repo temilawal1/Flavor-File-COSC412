@@ -19,4 +19,5 @@ public class RecipeController {
     public ResponseEntity<List<Recipe>> getAllRecipes() {
         return new ResponseEntity<List<Recipe>>(recipeService.getAllRecipes(),HttpStatus.OK);
     }
+
 }

@@ -10,13 +10,15 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import javax.annotation.processing.Generated;
 import java.util.List;
 
-@Document(collection = "datas")
+@Document(collection = "recipes")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Recipe {
     @Id
-    private ObjectId recipeID;
+    private ObjectId id;
+
+    private String username;
 
     private List<String> courses;
 
