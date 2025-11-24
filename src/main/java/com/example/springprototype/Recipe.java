@@ -30,4 +30,6 @@ public class Recipe {
 
     private List<String> reviewsLeft;
 
+    private List<String> imgLinks;
+
 }

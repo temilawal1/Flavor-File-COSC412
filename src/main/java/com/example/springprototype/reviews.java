@@ -30,4 +30,9 @@ public class reviews {
 
     private double rating;
 
+    private String reviewIDs;
+
+    public reviews(String reviewText) {
+        this.reviewText = reviewText;
+    }
 }
