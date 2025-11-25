@@ -1,6 +1,7 @@
-package com.example.springprototype;
+package com.example.springprototype.Controller;
 
-import org.apache.coyote.Response;
+import com.example.springprototype.Service.ReviewsService;
+import com.example.springprototype.reviews;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,7 @@ import java.util.Map;
         public ResponseEntity <List<reviews>> getAllReviews(){
             return new ResponseEntity<List<reviews>>(reviewsService.getAllReviews(),HttpStatus.OK);        }
 
-        @PostMapping
+        @PostMapping("/addReview")
         public ResponseEntity<reviews> createReview(@RequestBody Map<String, String> payload){
             reviews created = reviewsService.createReview(
                     payload.get("reviewBody"),

@@ -1,5 +1,7 @@
-package com.example.springprototype;
+package com.example.springprototype.Service;
 
+import com.example.springprototype.Repository.ReviewsRepository;
+import com.example.springprototype.reviews;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;

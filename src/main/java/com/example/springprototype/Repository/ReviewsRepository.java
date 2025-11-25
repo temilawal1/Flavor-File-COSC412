@@ -1,8 +1,9 @@
-package com.example.springprototype;
+package com.example.springprototype.Repository;
 
+import com.example.springprototype.reviews;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.stereotype.Repository;
+
 public interface ReviewsRepository extends MongoRepository<reviews, ObjectId> {
 
 

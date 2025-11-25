@@ -25,10 +25,12 @@ public class Users {
     private String email;
 
     private String phone;
-    @DocumentReference
-    private List<String> madeRecipes;
-    @DocumentReference
-    private List<String> savedRecipes;
-    @DocumentReference
-    private List<String> commentsPosted;
+
+
+//    @DocumentReference
+//    private List<String> madeRecipes;
+//    @DocumentReference
+//    private List<String> savedRecipes;
+//    @DocumentReference
+//    private List<String> commentsPosted;
 }

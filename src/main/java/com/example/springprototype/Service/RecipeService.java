@@ -1,5 +1,7 @@
-package com.example.springprototype;
+package com.example.springprototype.Service;
 
+import com.example.springprototype.Recipe;
+import com.example.springprototype.Repository.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

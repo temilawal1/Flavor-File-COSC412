@@ -1,5 +1,7 @@
-package com.example.springprototype;
+package com.example.springprototype.Controller;
 
+import com.example.springprototype.Recipe;
+import com.example.springprototype.Service.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
