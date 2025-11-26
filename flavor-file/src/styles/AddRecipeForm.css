@@ -1,0 +1,172 @@
+.add-recipe-container {
+    max-width: 48rem;
+    margin: 0 auto;
+}
+
+.form-card {
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+}
+
+.form-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #111827;
+    margin-bottom: 1.5rem;
+}
+
+.form-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.section-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #111827;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.field-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 0.5rem;
+}
+
+.required {
+    color: #dc2626;
+}
+
+.text-input,
+.textarea-input,
+.select-input,
+.number-input {
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+}
+
+.text-input:focus,
+.textarea-input:focus,
+.select-input:focus,
+.number-input:focus {
+    outline: none;
+    box-shadow: 2px solid #9333ea;
+    border-color: transparent;
+}
+
+.textarea-input {
+    resize: vertical;
+}
+
+.field-hint {
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+    color: #9ca3af;
+}
+
+.list-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.add-button {
+    color: #9333ea;
+    font-size: 0.875rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.add-button-hover {
+    color: #7e22ce;
+}
+
+.add-icon {
+    width: 1rem;
+    height: 1rem;
+}
+
+.list-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.list-item-row {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+}
+
+.list-item-input {
+    flex: 1;
+}
+
+.remove-button {
+    padding: 0.5rem 0.75rem;
+    color: #dc2626;
+    background: none;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.remove-button:hover {
+    background-color: #fef2f2;
+    color: #991b1b;
+}
+
+.submit-section {
+    padding-top: 1rem;
+    border-top: 1px solid #e5e7eb;
+}
+
+.submit-button {
+    width: 100%;
+    background: #9333ea;
+    color: white;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+}
+
+.submit-button:hover {
+    background: #7e22ce;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.submit-hint {
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    color: #9ca3af;
+    text-align: center;
+}

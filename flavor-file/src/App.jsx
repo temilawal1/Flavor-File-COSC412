@@ -1,58 +1,55 @@
 import {useState} from 'react'
+import { Search, Plus, Sparkles, ChefHat } from 'lucide-react';
+import AddRecipeForm from './Pages/AddRecipeForm';
 
 function App() {
-  const [activeTab, setActiveTab] = useState('browse')
+  const [activeTab, setActiveTab] = useState('add')
 
   return (
     <div className="app-container">
-      {/* Header */}
       <header className="header">
-        <h1>Flavor File</h1>
-        <p className="tagline">User-Friendly Recipe Book</p>
+        <div className="header-content">
+          <ChefHat className="header-icon" />
+          <div>
+            <h1 className="header-title">Flavor File</h1>
+            <p className="header-tagline">Your smart cooking companion</p>
+          </div>
+        </div>
       </header>
 
-      {/* Tab Navigation */}
       <nav className="tab-nav">
-        <button 
-        className={`tab-button ${activeTab==='browse' ? 'active':''}`}
-        onClick={() => setActiveTab('browse')}>
-          Browse & Search
-        </button>
-        <button className={`tab-button ${activeTab==='add' ? 'active':''}`}
-        onClick={() => setActiveTab('add')}>
-          Add Recipe
-        </button>
-        <button className={`tab-button ${activeTab==='ai' ? 'active' :''}`}
-        onClick={() => setActiveTab('ai')}>
-          AI Generator
-        </button>
+        <div className="tab-nav-content">
+          <button
+            onClick={() => setActiveTab('browse')}
+            className={`tab-button ${activeTab === 'browse' ? 'active' : ''}`}
+          >
+            <Search className="tab-icon" />
+            Browse
+          </button>
+          <button
+            onClick={() => setActiveTab('add')}
+            className={`tab-button ${activeTab === 'add' ? 'active' : ''}`}
+          >
+            <Plus className="tab-icon" />
+            Add Recipe
+          </button>
+          <button
+            onClick={() => setActiveTab('ai')}
+            className={`tab-button ${activeTab === 'ai' ? 'active' : ''}`}
+          >
+            <Sparkles className="tab-icon" />
+            AI Generator
+          </button>
+        </div>
       </nav>
 
-      {/* Main Content Area */}
       <main className="main-content">
-        {activeTab==='browse' && (
-          <div className="tab-content">
-            <h2>Browse & Search Recipes</h2>
-            <p>Recipe cards go here</p>
-          </div>
-        )}
-
-        {activeTab==='add' && (
-          <div className="tab-content">
-            <h2>Add New Recipe</h2>
-            <p>Recipe form goes here</p>
-          </div>
-        )}
-
-        {activeTab==='ai' && (
-          <div className="tab-content">
-            <h2>AI Recipe Generator</h2>
-            <p>Ingredients go here</p>
-          </div>
-        )}
+        {activeTab === 'browse' && <BrowsePage />}
+        {activeTab === 'add' && <AddRecipeForm />}
+        {activeTab === 'ai' && <AIGeneratorPage />}
       </main>
     </div>
-  )
+  );
 }
 
 export default App
