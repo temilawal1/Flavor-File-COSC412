@@ -26,7 +26,7 @@ public class RecipeController {
         return new ResponseEntity<List<Recipe>>(recipeService.getAllRecipes(),HttpStatus.OK);
     }
 
-    @PostMapping
+    @PostMapping ("/addRecipe")
     public ResponseEntity<Recipe> createRecipe (@RequestBody Recipe recipe) {
         Recipe savedRecipe = recipeService.createRecipe(recipe);
         return new ResponseEntity<>(savedRecipe, HttpStatus.CREATED);

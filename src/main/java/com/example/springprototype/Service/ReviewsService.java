@@ -1,5 +1,6 @@
 package com.example.springprototype.Service;
 
+import com.example.springprototype.Recipe;
 import com.example.springprototype.Repository.ReviewsRepository;
 import com.example.springprototype.reviews;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,15 +22,8 @@ public class ReviewsService {
     }
     @Autowired
     private MongoTemplate mongoTemplate;
-    public reviews createReview(String reviewBody, String recipeID){
-        reviews review = new reviews(reviewBody);
-        reviewsRepository.insert(review);
+    public reviews createReview(reviews review){
+        return reviewsRepository.insert(review);
 
-        mongoTemplate.update(reviews.class)
-                .matching(Criteria.where("recipeID").is(recipeID))
-                .apply(new Update().push("reviewIDs", review))
-                .first();
-
-        return review;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.springprototype.Controller;
 
+import com.example.springprototype.Recipe;
 import com.example.springprototype.Service.ReviewsService;
 import com.example.springprototype.reviews;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +22,9 @@ import java.util.Map;
         public ResponseEntity <List<reviews>> getAllReviews(){
             return new ResponseEntity<List<reviews>>(reviewsService.getAllReviews(),HttpStatus.OK);        }
 
-        @PostMapping("/addReview")
-        public ResponseEntity<reviews> createReview(@RequestBody Map<String, String> payload){
-            reviews created = reviewsService.createReview(
-                    payload.get("reviewBody"),
-                    payload.get("recipeID")
-            );
-
-            return new ResponseEntity<>(created, HttpStatus.CREATED);
+        @PostMapping ("/addReview")
+        public ResponseEntity<reviews> createReview (@RequestBody reviews review) {
+            reviews savedReview= reviewsService.createReview(review);
+            return new ResponseEntity<>(savedReview, HttpStatus.CREATED);
         }
     }
