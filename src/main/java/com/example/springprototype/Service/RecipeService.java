@@ -12,7 +12,12 @@ public class RecipeService {
 
     @Autowired
     private RecipeRepository recipeRepository;
+
     public List<Recipe> getAllRecipes(){
         return recipeRepository.findAll();
+    }
+
+    public Recipe createRecipe(Recipe recipe) {
+        return recipeRepository.insert(recipe);
     }
 }
