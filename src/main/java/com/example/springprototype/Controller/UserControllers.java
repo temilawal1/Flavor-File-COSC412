@@ -2,6 +2,7 @@ package com.example.springprototype.Controller;
 
 import com.example.springprototype.Repository.UserRepository;
 import com.example.springprototype.Service.UserServices;
+import com.example.springprototype.UserLogin;
 import com.example.springprototype.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,10 +28,20 @@ public class UserControllers {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Users> login(@RequestParam String username, @RequestParam String password) {
-        Optional<Users> user=userServices.getUserandPass(username, password);
-        return null;
+    public ResponseEntity<?> login(@RequestBody UserLogin userLogin) {
 
+        Optional<Users> user = userServices.getUserByUsername(userLogin.getUserName());
+
+        if (user.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User not found");
+        }
+
+        // Compare password here (do not return user until verified)
+        if (!user.get().getPassWord().equals(userLogin.getPassWord())) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Incorrect password");
+        }
+
+        return ResponseEntity.ok(user.get());
     }
 
     @PostMapping("/addUser")

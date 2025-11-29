@@ -17,7 +17,9 @@ public class UserServices {
         return userRepository.findAll();
     }
 
-    public Optional<Users> getUserandPass(String userName, String passWord){return userRepository.findByUserNameAndPassWord(userName,passWord);}
+    public Optional<Users> getUserByUsername(String userName){
+        return userRepository.findByUserName(userName);
+    }
 
     public Users createUser(Users user){
         return userRepository.insert(user);

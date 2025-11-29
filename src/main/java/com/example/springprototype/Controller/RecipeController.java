@@ -2,15 +2,11 @@ package com.example.springprototype.Controller;
 
 import com.example.springprototype.Recipe;
 import com.example.springprototype.Service.RecipeService;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,5 +26,14 @@ public class RecipeController {
     public ResponseEntity<Recipe> createRecipe (@RequestBody Recipe recipe) {
         Recipe savedRecipe = recipeService.createRecipe(recipe);
         return new ResponseEntity<>(savedRecipe, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/getRecipeByID")
+    public ResponseEntity<Recipe> getRecipeByID(@RequestParam String id) {
+        ObjectId objectId = new ObjectId(id); // needs correct import
+
+        return recipeService.getRecipeByID(objectId)
+                .map(recipe -> ResponseEntity.ok(recipe))
+                .orElse(ResponseEntity.notFound().build());
     }
 }
