@@ -1,4 +1,5 @@
 package com.example.springprototype;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +15,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Users {
     @Id
     private ObjectId userId;
@@ -26,11 +28,73 @@ public class Users {
 
     private String phone;
 
+    public ObjectId getUserId() {
+        return userId;
+    }
 
-//    @DocumentReference
-//    private List<String> madeRecipes;
-//    @DocumentReference
-//    private List<String> savedRecipes;
-//    @DocumentReference
-//    private List<String> commentsPosted;
+    public void setUserId(ObjectId userId) {
+        this.userId = userId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassWord() {
+        return passWord;
+    }
+
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public List<String> getMadeRecipes() {
+        return madeRecipes;
+    }
+
+    public void setMadeRecipes(List<String> madeRecipes) {
+        this.madeRecipes = madeRecipes;
+    }
+
+    public List<String> getSavedRecipes() {
+        return savedRecipes;
+    }
+
+    public void setSavedRecipes(List<String> savedRecipes) {
+        this.savedRecipes = savedRecipes;
+    }
+
+    public List<String> getCommentsPosted() {
+        return commentsPosted;
+    }
+
+    public void setCommentsPosted(List<String> commentsPosted) {
+        this.commentsPosted = commentsPosted;
+    }
+
+    private List<String> madeRecipes;
+
+    private List<String> savedRecipes;
+
+    private List<String> commentsPosted;
 }

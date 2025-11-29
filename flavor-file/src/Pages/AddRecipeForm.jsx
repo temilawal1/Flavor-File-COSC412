@@ -29,7 +29,7 @@ function AddRecipeForm() {
         };
 
         try {
-            const response = await fetch(`${API_BASE_URL}/posts`, {
+            const response = await fetch(`${API_BASE_URL}/posts/addRecipe`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
