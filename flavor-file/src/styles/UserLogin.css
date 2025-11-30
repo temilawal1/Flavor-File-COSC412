@@ -1,3 +1,6 @@
+* {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
 .login-container {
     min-height: 80vh;
     display: flex;
@@ -33,6 +36,7 @@
 .login-form {
     display: flex;
     flex-direction: column;
+    padding: 1rem;
     gap: 1.25rem;
 }
 
