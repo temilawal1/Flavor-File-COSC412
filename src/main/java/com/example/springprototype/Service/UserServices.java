@@ -21,6 +21,10 @@ public class UserServices {
         return userRepository.findByUserName(userName);
     }
 
+    public Optional<Users> getUserByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
     public Users createUser(Users user){
         return userRepository.insert(user);
     }

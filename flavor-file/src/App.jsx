@@ -1,9 +1,45 @@
-import {useState} from 'react'
-import { Search, Plus, Sparkles, ChefHat } from 'lucide-react';
+import {useState, useEffect} from 'react'
+import { Search, Plus, Sparkles, ChefHat, LogOut } from 'lucide-react';
 import AddRecipeForm from './Pages/AddRecipeForm';
+import LoginPage from './Pages/UserLogin';
+import './App.css';
 
 function App() {
-  const [activeTab, setActiveTab] = useState('add')
+  const [activeTab, setActiveTab] = useState('add');
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const savedUser = localStorage.getItem('user');
+    if (savedUser) {
+      setUser(JSON.parse(savedUser));
+    }
+  }, []);
+
+  const handleLogin = (userData) => {
+    setUser(userData);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    setUser(null);
+  };
+
+  if (!user) {
+    return (
+      <div className="app-container">
+        <header className="header">
+          <div className="header-content">
+            <ChefHat className="header-icon" />
+            <div>
+              <h1 className="header-title">Flavor File</h1>
+              <p className="header-tagline">Your smart cooking companion</p>
+            </div>
+          </div>
+        </header>
+        <LoginPage onLogin={handleLogin} />
+      </div>
+    );
+  }
 
   return (
     <div className="app-container">

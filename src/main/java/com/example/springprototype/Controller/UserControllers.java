@@ -4,6 +4,8 @@ import com.example.springprototype.Repository.UserRepository;
 import com.example.springprototype.Service.UserServices;
 import com.example.springprototype.UserLogin;
 import com.example.springprototype.Users;
+
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -42,6 +44,24 @@ public class UserControllers {
         }
 
         return ResponseEntity.ok(user.get());
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<?> register(@RequestBody Users user) {
+        Optional<Users> existingUser = userServices.getUserByUsername(user.getUserName());
+        //Check if username already exists
+        if (existingUser.isPresent()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Username already taken");
+        }
+
+        //Check if email already exists
+        Optional<Users> existingEmail = userServices.getUserByEmail(user.getEmail());
+        if (existingEmail.isPresent()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Email already registered");
+        }
+
+        Users savedUser = userServices.createUser(user);
+        return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
     }
 
     @PostMapping("/addUser")
