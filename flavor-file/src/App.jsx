@@ -2,6 +2,10 @@ import {useState, useEffect} from 'react'
 import { Search, Plus, Sparkles, ChefHat, LogOut } from 'lucide-react';
 import AddRecipeForm from './Pages/AddRecipeForm';
 import LoginPage from './Pages/UserLogin';
+import BrowsePage from './Pages/BrowsePage';
+import AiGeneratorPage from './Pages/AiGeneratorPage';
+import BrowseUserRecipes from './Pages/BrowseUserRecipes';
+import RecipeAddAlert from './components/RecipeAddAlert';
 import './App.css';
 
 function App() {
@@ -63,6 +67,13 @@ function App() {
             Browse
           </button>
           <button
+            onClick={() => setActiveTab('user_recipes')}
+            className={`tab-button ${activeTab === 'user_recipes' ? 'active' : ''}`}
+          >
+            <Search className="tab-icon" />
+            My Recipes
+          </button>
+          <button
             onClick={() => setActiveTab('add')}
             className={`tab-button ${activeTab === 'add' ? 'active' : ''}`}
           >
@@ -81,8 +92,9 @@ function App() {
 
       <main className="main-content">
         {activeTab === 'browse' && <BrowsePage />}
-        {activeTab === 'add' && <AddRecipeForm />}
-        {activeTab === 'ai' && <AIGeneratorPage />}
+        {activeTab === 'add' && <AddRecipeForm username = {user.username} userKey = {user.userKey} />}
+        {activeTab === 'ai' && <AiGeneratorPage />}
+        {activeTab === 'user_recipes' && <BrowseUserRecipes username = {user.username} userKey = {user.userKey} />}
       </main>
     </div>
   );

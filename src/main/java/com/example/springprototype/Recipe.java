@@ -82,6 +82,58 @@ public class Recipe {
         this.imgLinks = imgLinks;
     }
 
+    public List<String> getIngredients(){
+        return ingredients;
+    }
+
+    public void setIngredients(List<String> ingredients){
+        this.ingredients = ingredients;
+    }
+
+    public List<String> getPrepSteps(){
+        return prepSteps;
+    }
+
+    public void setPrepSteps(List<String> prepSteps){
+        this.prepSteps = prepSteps;
+    }
+
+    public String getServingSize(){
+        return servingSize;
+    }
+
+    public void setServingSize(String servingSize){
+        this.servingSize = servingSize;
+    }
+
+    public String getServes(){
+        return serves;
+
+    }
+    public void setServes(String serves){
+        this.serves = serves;
+    }
+    
+    public String prepTime(){
+        return prepTime;
+    }
+
+    public void setPrepTime(String prepTime){
+        this.prepTime = prepTime;
+    }
+
+    
+    private List<String> ingredients; //
+
+    private List<String> prepSteps; //
+
+    private String servingSize; //
+
+    private String serves; //
+
+    private String prepTime; //
+
+    
     private String username;
 
     private List<String> courses;
