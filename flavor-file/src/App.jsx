@@ -9,7 +9,7 @@ import RecipeAddAlert from './components/RecipeAddAlert';
 import './App.css';
 
 function App() {
-  const [activeTab, setActiveTab] = useState('add');
+  const [activeTab, setActiveTab] = useState('browse');
   const [user, setUser] = useState(null);
 
   useEffect(() => {

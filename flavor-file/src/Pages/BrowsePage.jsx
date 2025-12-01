@@ -46,14 +46,14 @@ function BrowsePage({ }) {
             <div className="user-recipes">
                 {recipes.map((recipe) => (
                     <div key={recipe.id}>
-                        <h3>{recipe.recipeName}</h3>
-                        <p>Ingredients: {recipe.ingredients.join(', ')}</p>
-                        <p>Preparation Steps: {recipe.prepSteps.join(', ')}</p>
-                        <p>Author: {recipe.author}</p>
-                        <p>Serving Size: {recipe.servingSize}</p>
-                        <p>Serves: {recipe.serves}</p>
-                        <p>Time to PRepare: {recipe.prepTime}</p>
-                        <p>Courses: {recipe.courses.join(', ')}</p>
+                        <h3>{recipe.recipeName || 'Untitled Recipe'}</h3>
+                        <p>Ingredients: {(recipe.ingredients || []).join(',  ') || 'None listed'}</p>
+                        <p>Preparation Steps: {(recipe.prepSteps || []).join(',  ') || 'None listed'}</p>
+                        <p>Author: {recipe.author || 'Unknown'}</p>
+                        <p>Serving Size: {recipe.servingSize || 'Not specified'}</p>
+                        <p>Serves: {recipe.serves || 'Not specified'}</p>
+                        <p>Time to PRepare: {recipe.prepTime || 'Not specified'}</p>
+                        <p>Courses: {(recipe.courses || []).join(', ') || 'None listed'}</p>
                     </div>
                 ))}
             </div>
