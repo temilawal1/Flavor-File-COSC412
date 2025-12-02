@@ -1,0 +1,36 @@
+.loading-container,
+.empty-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    text-align: center;
+}
+
+.loading-container p,
+.empty-container p {
+    font-size: 1.125rem;
+    color: #6b7280;
+}
+
+.empty-container p {
+    max-width: 400px;
+    line-height: 1.6;
+}
+.recipes-grid {
+    gap: 5rem;
+}
+
+.add-recipe-link-button {
+    border: none;
+    background: none;
+    font-size: 1.125rem;
+    padding: 0px;
+    color: #6b7280;
+}
+
+.add-recipe-link-button:hover {
+
+    color: #9333ea;
+}

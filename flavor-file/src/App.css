@@ -1,3 +1,7 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
 .app-container {
     min-height: 100vh;
     background-color: #f9fafb;
@@ -93,15 +97,18 @@
     display: flex;
     align-items: center;
     gap: 1rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .user-info span { 
-    font-size: 0.9rem;
+    font-size: 1.3rem;
 }
 
 .logout-button {
     display: flex;
     align-items: center;
+    text-align: center;
     gap: 0.5rem;
     background: rgba(255, 255, 255, 0.2);
     color: white;
@@ -114,10 +121,19 @@
 }
 
 .logout-button:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: #9f67d6;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 .logout-icon {
     width: 1rem;
     height: 1rem;
+}
+
+.welcome-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    justify-content: space-between;
 }

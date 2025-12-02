@@ -180,6 +180,12 @@ function UserLogin({ onLogin }){
                             </>
                         )}
                     </button>
+                     <div className = "skip-login">
+                    <button className = "submit-button"
+                     onClick = {() => onLogin({ userName: "guest", userKey: "guest-user"})}>
+                        Continue As Guest
+                     </button>
+                </div>
                 </form>
 
                 <div className="toggle-mode">
@@ -194,12 +200,7 @@ function UserLogin({ onLogin }){
                         </button>
                     </p>
                 </div>
-                <div className = "skip-login">
-                    <button className = "submit-button"
-                     onClick = {() => onLogin({ userName: "guest", userKey: "guest-user"})}>
-                        Continue As Guest
-                     </button>
-                </div>
+               
             </div>
         </div>
     );

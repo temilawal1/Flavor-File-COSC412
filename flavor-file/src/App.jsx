@@ -54,6 +54,14 @@ function App() {
             <h1 className="header-title">Flavor File</h1>
             <p className="header-tagline">Your smart cooking companion</p>
           </div>
+          <div className="user-info">
+              <span>Welcome, {user.userName}!</span>
+            
+            <button className="logout-button" onClick={handleLogout}>
+              <LogOut size={16} />
+              Logout
+            </button>
+          </div>
         </div>
       </header>
 
@@ -94,7 +102,7 @@ function App() {
         {activeTab === 'browse' && <BrowsePage />}
         {activeTab === 'add' && <AddRecipeForm username = {user.userName} userKey = {user.userKey} />}
         {activeTab === 'ai' && <AiGeneratorPage />}
-        {activeTab === 'user_recipes' && <BrowseUserRecipes username = {user.userName} userKey = {user.userKey} />}
+        {activeTab === 'user_recipes' && <BrowseUserRecipes username = {user.userName} userKey = {user.userKey} setActiveTab = {setActiveTab}/>}
       </main>
     </div>
   );

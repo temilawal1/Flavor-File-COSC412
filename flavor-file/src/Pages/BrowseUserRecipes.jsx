@@ -8,13 +8,10 @@ import '../styles/BrowseUserRecipes.css';
 const API_BASE_URL = 'http://localhost:8080/api/v1/addRecipe';
 
 
-
-function BrowseUserRecipes({ username, userKey }) {
+function BrowseUserRecipes({ username, userKey, setActiveTab }) {
 
     const [recipes, setRecipes] = useState([]);
     const [loading, setLoading] = useState(true);
-
-
 
     useEffect(() => {
         const fetchRecipes = async () => {
@@ -24,7 +21,7 @@ function BrowseUserRecipes({ username, userKey }) {
                 if (response.ok) {
                     const data = await response.json();
                     const userRecipes = data.filter(recipe => recipe.username === username);
-                    setRecipes(data);
+                    setRecipes(userRecipes);
                 } else {
                     console.error('failed to fetch');
                 }
@@ -39,10 +36,9 @@ function BrowseUserRecipes({ username, userKey }) {
         fetchRecipes();
     }, [username]);
 
-    if (loading) {
-        return (
-            <div className="user-loading-state">
-                <div className="loading-spinner"></div>
+    if (loading) { 
+        return ( 
+            <div className="loading-container">
                 <p>Loading your recipes...</p>
             </div>
         );
@@ -50,14 +46,11 @@ function BrowseUserRecipes({ username, userKey }) {
 
     if (recipes.length === 0) {
         return (
-            <div className="browse-user-recipes">
-                <div className="user-empty-state">
-                    <div className="user-empty-state-icon">
-                        <ChefHat />
-                    </div>
-                    <h3>No Recipes Yet</h3>
-                    <p>You haven't added any recipes yet. Start building your collection!</p>
-                </div>
+            <div className="empty-container">
+                <p>No recipes found. Add your first recipe <button className="add-recipe-link-button"
+                    onClick={() => setActiveTab("add")}>
+                    here!</button>
+                </p>
             </div>
         );
     }
@@ -81,7 +74,7 @@ function BrowseUserRecipes({ username, userKey }) {
                 </div>
             </div>
         </div>
-    );     
+    );
 }
 
 export default BrowseUserRecipes;

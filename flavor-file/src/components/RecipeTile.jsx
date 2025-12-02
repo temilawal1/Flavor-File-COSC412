@@ -38,6 +38,7 @@ function RecipeTile({ recipe }) {
                             {recipe.serves}
                         </span>
                     )}
+                    
                 </div>
 
                 <button

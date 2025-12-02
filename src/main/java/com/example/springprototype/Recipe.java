@@ -133,7 +133,6 @@ public class Recipe {
 
     private String prepTime; //
 
-    
     private String username;
 
     private List<String> courses;
