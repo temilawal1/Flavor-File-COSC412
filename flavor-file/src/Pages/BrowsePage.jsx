@@ -7,6 +7,32 @@ import '../styles/BrowsePage.css';
 
 const API_BASE_URL = 'http://localhost:8080/api/v1/posts';
 
+const DEMO_RECIPES = [
+    {
+        id: "demo-1",
+        recipeName: "Chicken Alfredo",
+        ingredients: [
+            "1 lb fettucine pasta",
+            "2 chicken breasts",
+            "2 cups heavy cream",
+            "1 cup parmesan cheese",
+            "4 cloves garlic, minced"
+        ],
+        prepSteps: [
+            "Cook fettucine according to package directions",
+            "Season and cook chicken until golden",
+            "Make cream sauce with butter, garlic, cream, and parmesan",
+            "Combine pasta, sauce, and sliced chicken"
+        ],
+        prepTime: "33 mins",
+        serves: "6",
+        author: "Max",
+        username: "m_fadley",
+        courses: ["Italian, Dinner"],
+        imgLinks: ["https://www.simplejoy.com/wp-content/uploads/2023/09/chicken-fettuccine-alfredo.jpg"]
+    }
+];
+
 function BrowsePage({ }) {
 
     const [recipes, setRecipes] = useState([]);
