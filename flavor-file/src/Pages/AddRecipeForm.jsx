@@ -7,7 +7,7 @@ const API_BASE_URL = 'http://localhost:8080/api/v1/posts';
 
 const ADD_RECIPE_URL = `${API_BASE_URL}/addRecipe`;
 
-function AddRecipeForm( {username, userKey}) {
+function AddRecipeForm({ username, userKey, onRecipeAdded }) {
     const [recipeName, setRecipeName] = useState('');
     const [ingredients, setIngredients] = useState(['']);
     const [prepSteps, setPrepSteps] = useState(['']);
@@ -43,7 +43,7 @@ function AddRecipeForm( {username, userKey}) {
         };
 
         try {
-            const response = await fetch(`${ADD_RECIPE_URL}/addRecipe`, {
+            const response = await fetch(ADD_RECIPE_URL, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

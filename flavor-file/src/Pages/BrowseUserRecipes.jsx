@@ -1,11 +1,15 @@
 // page to browse your own recipes
 import { useEffect, useState } from 'react';
+import { BookOpen, ChefHat } from 'lucide-react';
+import RecipeTile from '../components/RecipeTile';
+import '../styles/RecipeTile.css';
+import '../styles/BrowseUserRecipes.css';
 
-const API_BASE_URL = 'http://localhost:8080/api/addRecipe';
+const API_BASE_URL = 'http://localhost:8080/api/v1/addRecipe';
 
 
 
-function BrowseUserRecipes({ username }) {
+function BrowseUserRecipes({ username, userKey }) {
 
     const [recipes, setRecipes] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -35,33 +39,49 @@ function BrowseUserRecipes({ username }) {
         fetchRecipes();
     }, [username]);
 
-    if (loading) return <p>Loading..</p>
-    if (recipes.length === 0) return <p>No recipes</p>
+    if (loading) {
+        return (
+            <div className="user-loading-state">
+                <div className="loading-spinner"></div>
+                <p>Loading your recipes...</p>
+            </div>
+        );
+    }
+
+    if (recipes.length === 0) {
+        return (
+            <div className="browse-user-recipes">
+                <div className="user-empty-state">
+                    <div className="user-empty-state-icon">
+                        <ChefHat />
+                    </div>
+                    <h3>No Recipes Yet</h3>
+                    <p>You haven't added any recipes yet. Start building your collection!</p>
+                </div>
+            </div>
+        );
+    }
 
     return (
-        <>
-            <AddRecipeForm
-                username={username}
-                userKey={userKey}
-                onRecipeAdded={(newRecipe) => setRecipes(prev => [...prev, newRecipe])}
-            />
-            <div className="user-recipes">
-                <ul>
+        <div className="browse-user-recipes">
+            <div className="user-recipes-header">
+                <div className="user-recipes-header-left">
+                    <h2 className="user-recipes-title">My Recipes</h2>
+                    <p className="user-recipes-subtitle">Your recipe collection</p>
+                </div>
+                <div className="recipe-count-badge">
+                    <BookOpen />
+                    {recipes.length} Recipe{recipes.length !== 1 ? 's' : ''}
+                </div>
+
+                <div className="recipes-grid">
                     {recipes.map((recipe) => (
-                        <>
-                            <h3>{recipe.recipeName}</h3>
-                            <p>Ingredients: {recipe.ingredients}</p>
-                            <p>Preparation Steps: {recipe.prepSteps}</p>
-                            <p>Author: {recipe.author}</p>
-                            <p>Serving Size: {recipe.servingSize}</p>
-                            <p>Serves: {recipe.serves}</p>
-                            <p>Time to PRepare: {recipe.prepTime}</p>
-                            <p>Courses: {recipe.courses}</p>
-                        </>
+                        <RecipeTile key={recipe.id?.$oid || String(recipe.id) || index} recipe={recipe} />
                     ))}
-                </ul>
-            </div></>
-    )
+                </div>
+            </div>
+        </div>
+    );     
 }
 
-export default BrowseUserRecipes
+export default BrowseUserRecipes;

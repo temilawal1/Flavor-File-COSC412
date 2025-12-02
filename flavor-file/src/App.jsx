@@ -92,9 +92,9 @@ function App() {
 
       <main className="main-content">
         {activeTab === 'browse' && <BrowsePage />}
-        {activeTab === 'add' && <AddRecipeForm username = {user.username} userKey = {user.userKey} />}
+        {activeTab === 'add' && <AddRecipeForm username = {user.userName} userKey = {user.userKey} />}
         {activeTab === 'ai' && <AiGeneratorPage />}
-        {activeTab === 'user_recipes' && <BrowseUserRecipes username = {user.username} userKey = {user.userKey} />}
+        {activeTab === 'user_recipes' && <BrowseUserRecipes username = {user.userName} userKey = {user.userKey} />}
       </main>
     </div>
   );

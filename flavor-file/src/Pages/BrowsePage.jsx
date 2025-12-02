@@ -1,17 +1,16 @@
 // page to browse your own recipes
 import { useEffect, useState } from 'react';
-import AddRecipeForm from './AddRecipeForm';
+import RecipeTile from '../components/RecipeTile';
+import '../styles/RecipeTile.css';
+import '../styles/BrowsePage.css';
+
 
 const API_BASE_URL = 'http://localhost:8080/api/v1/posts';
-
-
 
 function BrowsePage({ }) {
 
     const [recipes, setRecipes] = useState([]);
     const [loading, setLoading] = useState(true);
-
-
 
     useEffect(() => {
         const fetchRecipes = async () => {
@@ -35,30 +34,31 @@ function BrowsePage({ }) {
         fetchRecipes();
     }, []);
 
-    if (loading) return <p>Loading..</p>
-    if (recipes.length === 0) return <p>No recipes</p>
+    if (loading) { 
+        return ( 
+            <div className="loading-container">
+                <p>Loading recipes...</p>
+            </div>
+        );
+    }
+    if (recipes.length === 0) {
+        return (
+            <div className="empty-container">
+                <p>No recipes found. Be the first to add one!</p>
+            </div>
+        );
+    }
 
     return (
-        <>
-            <AddRecipeForm
-                onRecipeAdded={(newRecipe) => setRecipes(prev => [...prev, newRecipe])}
-            />
-            <div className="user-recipes">
+        <div className="browse-page">
+            <h2 className="page-title">Browse Recipes</h2>
+            <div className="recipes.grid">
                 {recipes.map((recipe) => (
-                    <div key={recipe.id}>
-                        <h3>{recipe.recipeName || 'Untitled Recipe'}</h3>
-                        <p>Ingredients: {(recipe.ingredients || []).join(',  ') || 'None listed'}</p>
-                        <p>Preparation Steps: {(recipe.prepSteps || []).join(',  ') || 'None listed'}</p>
-                        <p>Author: {recipe.author || 'Unknown'}</p>
-                        <p>Serving Size: {recipe.servingSize || 'Not specified'}</p>
-                        <p>Serves: {recipe.serves || 'Not specified'}</p>
-                        <p>Time to PRepare: {recipe.prepTime || 'Not specified'}</p>
-                        <p>Courses: {(recipe.courses || []).join(', ') || 'None listed'}</p>
-                    </div>
+                    <RecipeTile key={recipe.id?.$oid || String(recipe.id) || index} recipe={recipe} />
                 ))}
             </div>
-        </>
-    )
+        </div>
+    );
 }
 
-export default BrowsePage
+export default BrowsePage;
