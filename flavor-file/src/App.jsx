@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import { Search, Plus, Sparkles, ChefHat, LogOut } from 'lucide-react';
 import AddRecipeForm from './Pages/AddRecipeForm';
 import LoginPage from './Pages/UserLogin';
@@ -55,8 +55,7 @@ function App() {
             <p className="header-tagline">Your smart cooking companion</p>
           </div>
           <div className="user-info">
-              <span>Welcome, {user.userName}!</span>
-            
+            <span>Welcome, {user.userName}!</span>
             <button className="logout-button" onClick={handleLogout}>
               <LogOut size={16} />
               Logout
@@ -100,9 +99,9 @@ function App() {
 
       <main className="main-content">
         {activeTab === 'browse' && <BrowsePage />}
-        {activeTab === 'add' && <AddRecipeForm username = {user.userName} userKey = {user.userKey} />}
+        {activeTab === 'add' && <AddRecipeForm username={user.userName} userKey={user.userKey} />}
         {activeTab === 'ai' && <AiGeneratorPage />}
-        {activeTab === 'user_recipes' && <BrowseUserRecipes username = {user.userName} userKey = {user.userKey} setActiveTab = {setActiveTab}/>}
+        {activeTab === 'user_recipes' && <BrowseUserRecipes username={user.userName} userKey={user.userKey} setActiveTab={setActiveTab} />}
       </main>
     </div>
   );

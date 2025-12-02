@@ -46,7 +46,6 @@ const DEMO_RECIPES = [
             "Garlic Powder",
             "Curry Powder",
             "Itallian seasoning"
-
         ],
         prepSteps: [
             "Salt and boil water",
@@ -63,7 +62,7 @@ const DEMO_RECIPES = [
         author: "Temi",
         username: "tlawal1",
         courses: ["Lunch, Dinner"],
-        imgLinks: ["https://media.discordapp.net/attachments/1318679392024657960/1445534203365163233/IMG_6284.jpg?ex=6930b222&is=692f60a2&hm=a2294e556fd8a39fb13c807fb58533e367092e4e52d979150512f4e2184c6324&=&format=webp&width=554&height=739"]
+        imgLinks: ["https://media.discordapp.net/attachments/1318679392024657960/1445534203365163233/IMG_6284.jpg?ex=6930b222&is=692f60a2&hm=a2294e556fd8a39fb13c807fb58533e367092e4e52d979150512f4e2184c6324&=&format=webp&width=554&height=739"],
     }
 ];
 
