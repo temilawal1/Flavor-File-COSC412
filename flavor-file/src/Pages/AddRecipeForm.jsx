@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Plus } from 'lucide-react'
 import '../styles/AddRecipeForm.css';
-import RecipeAddAlert from '../components/RecipeAddAlert';
 
 const API_BASE_URL = 'http://localhost:8080/api/v1/posts';
 
@@ -158,7 +157,7 @@ function AddRecipeForm({ username, userKey, onRecipeAdded }) {
 
     return (
         <div className="add-recipe-container">
-            {showAlert && <RecipeAddAlert message={alertMessage} />}
+            {showAlert && <setAlertMessage message={alertMessage} />}
             <div className="form-card">
                 <h2 className="form-title">Add New Recipe</h2>
 
