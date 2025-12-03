@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FlavorFile AI Recipe Helper</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: #111827;
+            color: #e5e7eb;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .container {
+            margin-top: 40px;
+            width: 95%;
+            max-width: 800px;
+            background: #020617;
+            border-radius: 12px;
+            padding: 24px 28px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 1px solid #1f2937;
+        }
+
+        h1 {
+            margin-top: 0;
+            margin-bottom: 4px;
+            font-size: 1.8rem;
+            color: #f97316;
+        }
+
+        .subtitle {
+            margin: 0 0 20px 0;
+            color: #9ca3af;
+            font-size: 0.95rem;
+        }
+
+        label {
+            font-size: 0.9rem;
+            color: #e5e7eb;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 12px;
+            align-items: flex-end;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        input[type="number"] {
+            padding: 8px 10px;
+            border-radius: 8px;
+            border: 1px solid #4b5563;
+            background: #020617;
+            color: #e5e7eb;
+            width: 90px;
+        }
+
+        button {
+            padding: 10px 18px;
+            border-radius: 999px;
+            border: none;
+            background: #f97316;
+            color: #020617;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.15s ease, transform 0.05s ease;
+        }
+
+        button:hover {
+            background: #fb923c;
+            transform: translateY(-1px);
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+
+        .status {
+            font-size: 0.85rem;
+            color: #9ca3af;
+            min-height: 1.2em;
+            margin-bottom: 8px;
+        }
+
+        pre {
+            margin: 0;
+            padding: 14px 16px;
+            background: #020617;
+            border-radius: 10px;
+            border: 1px solid #1f2937;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-height: 400px;
+            overflow-y: auto;
+            font-size: 0.9rem;
+        }
+
+        .error {
+            color: #fca5a5;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>FlavorFile AI Helper</h1>
+    <p class="subtitle">
+        Ask the backend to suggest new recipe ideas based on what’s already in the database.
+    </p>
+
+    <div class="controls">
+        <div>
+            <label for="count">How many ideas?</label>
+            <input id="count" type="number" min="1" max="10" value="3">
+        </div>
+
+        <div>
+            <button id="generate-btn" type="button">Get AI Suggestions</button>
+        </div>
+    </div>
+
+    <div id="status" class="status"></div>
+
+    <pre id="output">No suggestions yet. Click "Get AI Suggestions" to try it.</pre>
+</div>
+
+<script>
+    const countInput = document.getElementById('count');
+    const button = document.getElementById('generate-btn');
+    const statusEl = document.getElementById('status');
+    const outputEl = document.getElementById('output');
+
+    async function fetchSuggestions() {
+        const count = parseInt(countInput.value, 10) || 3;
+
+        statusEl.textContent = 'Calling /api/ai/recommend...';
+        statusEl.classList.remove('error');
+        outputEl.textContent = '';
+
+        try {
+            const response = await fetch(`/api/ai/recommend?count=${encodeURIComponent(count)}`);
+
+            if (!response.ok) {
+                // This is where you’ll see the 429 / quota issue in a friendly way
+                const text = await response.text();
+                statusEl.textContent = `Backend error: ${response.status} ${response.statusText}`;
+                statusEl.classList.add('error');
+                outputEl.textContent = text || 'No additional error body.';
+                return;
+            }
+
+            const text = await response.text();
+            statusEl.textContent = 'Success!';
+            outputEl.textContent = text;
+        } catch (err) {
+            statusEl.textContent = 'Network or server error.';
+            statusEl.classList.add('error');
+            outputEl.textContent = String(err);
+        }
+    }
+
+    button.addEventListener('click', fetchSuggestions);
+</script>
+</body>
+</html>
