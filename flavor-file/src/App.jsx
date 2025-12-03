@@ -5,7 +5,6 @@ import LoginPage from './Pages/UserLogin';
 import BrowsePage from './Pages/BrowsePage';
 import AiGeneratorPage from './Pages/AiGeneratorPage';
 import BrowseUserRecipes from './Pages/BrowseUserRecipes';
-import RecipeAddAlert from './components/RecipeAddAlert';
 import './App.css';
 
 function App() {

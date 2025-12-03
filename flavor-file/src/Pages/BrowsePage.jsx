@@ -45,7 +45,7 @@ const DEMO_RECIPES = [
             "Chicken Boullion",
             "Garlic Powder",
             "Curry Powder",
-            "Itallian seasoning"
+            "Italian seasoning"
         ],
         prepSteps: [
             "Salt and boil water",
