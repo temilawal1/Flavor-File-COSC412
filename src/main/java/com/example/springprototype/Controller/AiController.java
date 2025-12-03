@@ -16,9 +16,8 @@ public class AiController {
         this.aiService = aiService;
     }
 
-    @GetMapping("/recommend")
+    @GetMapping("/recommend")   // <-- IMPORTANT: has a path
     public String recommend(@RequestParam(defaultValue = "3") int count) {
         return aiService.recommendFromExistingRecipes(count);
     }
 }
-
