@@ -1,30 +1,24 @@
-package com.example.springprototype;
+package com.example.springprototype.Controller;
 
-import com.openai.client.OpenAIClient;
-import com.openai.client.okhttp.OpenAIOkHttpClient;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import com.example.springprototype.Service.AiService;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-@Configuration
-public class OpenAIConfig {
+@RestController
+@RequestMapping("/api/ai")
+public class AiController {
 
-    @Bean
-    public OpenAIClient openAIClient() {
-        //check that OPENAI_API_KEY is actually visible to the app ---
-        String key = System.getenv("OPENAI_API_KEY");
+    private final AiService aiService;
 
-        if (key == null) {
-            System.out.println("DEBUG OPENAI_API_KEY: null (environment variable not found)");
-        } else {
-            // print only the first few characters so you can verify it's the right one
-            int len = Math.min(12, key.length());
-            String prefix = key.substring(0, len);
-            System.out.println("DEBUG OPENAI_API_KEY prefix: " + prefix + "...");
-        }
-        
+    public AiController(AiService aiService) {
+        this.aiService = aiService;
+    }
 
-        // Let the official client read the key from the environment
-        return OpenAIOkHttpClient.fromEnv();
+    @GetMapping("/recommend")
+    public String recommend(@RequestParam(defaultValue = "3") int count) {
+        return aiService.recommendFromExistingRecipes(count);
     }
 }
 
