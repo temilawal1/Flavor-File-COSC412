@@ -1,7 +1,7 @@
 ## FlavorFile
-Temilola Lawal, Amanda Ichniowski, Elijah Mari, Max Fadley,John Kenny
-- Springboot must be installed
-- To install springboot, maven must be installed first. follow instructions here: https://docs.spring.io/spring-boot/installing.html and here: https://maven.apache.org/download.cgi
+Temilola Lawal, Amanda Ichniowski, Elijah Mari, Max Fadley, John Kenny
+- Spring Boot must be installed
+- To install Spring Boot, Maven must be installed first. follow instructions here: https://docs.spring.io/spring-boot/installing.html and here: https://maven.apache.org/download.cgi
 - Recommended to use intelliJ as an IDE
 
 - If the user has windows as their operating system. Please install maven and make sure the path for its bin is placed correctly in the path variables for enviroment variables.
