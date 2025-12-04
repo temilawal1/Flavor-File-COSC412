@@ -17,13 +17,13 @@
 }
 
 .mode-btn:hover {
-    border-color: #2563eb;
-    color: #2563eb;
+    border-color: #9333ea;
+    color: #9333ea;
 }
 
 .mode-btn.active {
-    background: #2563eb;
-    border-color: #2563eb;
+    background: #9333ea;
+    border-color: #9333ea;
     color: white;
 }
 
@@ -53,13 +53,13 @@
 
 .ingredient-input:focus {
     outline: none;
-    border-color: #2563eb;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    border-color: #9333ea;
+    box-shadow: 0 0 0 3px rgba(135, 78, 181, 0.1);
 }
 
 .add-ingredient-btn {
     padding: 0.75rem;
-    background: #2563eb;
+    background: #9333ea;
     color: white;
     border: none;
     border-radius: 8px;
@@ -70,7 +70,7 @@
 }
 
 .add-ingredient-btn:hover {
-    background: #1d4ed8;
+    background: #772cbd;
 }
 
 .ingredient-tags {
@@ -86,7 +86,7 @@
     gap: 0.25rem;
     padding: 0.5rem 0.75rem;
     background: #dbeafe;
-    color: #1e40af;
+    color: #7b25cc;
     border-radius: 999px;
     font-size: 0.875rem;
 }
@@ -94,7 +94,7 @@
 .remove-tag-btn {
     background: none;
     border: none;
-    color: #1e40af;
+    color: #7b25cc;
     cursor: pointer;
     padding: 0;
     display: flex;
@@ -123,7 +123,31 @@
     color: #374151;
 }
 
+.ai-generate-btn {
+    padding: 0.75rem;
+    background: #9333ea;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
 .ai-generate-btn:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+}
+
+.count-input {
+    padding: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 5px;
+}
+
+.count-input:focus {
+    outline: none;
+    border-color: #9333ea;
+    box-shadow: 0 0 0 3px rgba(135, 78, 181, 0.1);
 }

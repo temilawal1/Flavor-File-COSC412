@@ -158,7 +158,7 @@ function AiGeneratorPage() {
                 {/* Count Input */}
                 <div className="count-section">
                     <label>How many recipe ideas?</label>
-                    <input
+                    <input className = "count-input"
                         type="number"
                         min="1"
                         max="10"
